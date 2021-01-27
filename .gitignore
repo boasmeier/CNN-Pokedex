@@ -1,9 +1,10 @@
-.plot.png
-.lb.pickle
-.pokedex.model
+plot.png
+lb.pickle
+pokedex.model
 dataset
 examples
-.test.py
+test.py
+.vsvode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
