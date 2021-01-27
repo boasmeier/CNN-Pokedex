@@ -4,7 +4,7 @@ pokedex.model
 dataset
 examples
 test.py
-.vsvode
+.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
