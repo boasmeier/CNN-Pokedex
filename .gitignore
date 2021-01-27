@@ -1,8 +1,8 @@
 .plot.png
 .lb.pickle
 .pokedex.model
-.dataset
-.examples
+dataset
+examples
 .test.py
 
 # Byte-compiled / optimized / DLL files
