@@ -8,15 +8,19 @@ class MyWidget(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
 
-        self.buttonImg = QtWidgets.QPushButton("Chose img!")
+        # setting title 
+        self.setWindowTitle("CNN-Pokedex")
+
+        self.buttonImg = QtWidgets.QPushButton("Choose img")
         self.buttonDownload = QtWidgets.QPushButton("Download")
-        self.text = QtWidgets.QLabel("Pokedex!", alignment=QtCore.Qt.AlignTop.AlignHCenter)
-        self.errorMessage = QtWidgets.QLabel("Please, first classify an image.", alignment=QtCore.Qt.AlignHCenter)
+        self.text = QtWidgets.QLabel("Pokedex!", alignment=QtCore.Qt.AlignCenter)
+        self.errorMessage = QtWidgets.QLabel("Please, first classify an image.", alignment=QtCore.Qt.AlignCenter)
         self.errorMessage.setHidden(True)
         self.img = QtWidgets.QLabel(self, alignment=QtCore.Qt.AlignVCenter.AlignHCenter)
         self.image = None
 
         self.initLayout()
+        self.setStyles()
         self.buttonImg.clicked.connect(self.openFileDialog)
         self.buttonDownload.clicked.connect(self.download)
 
@@ -27,8 +31,12 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.img)
         self.layout.addWidget(self.buttonImg)
         self.layout.addWidget(self.buttonDownload)
-        
         self.setLayout(self.layout)
+
+    def setStyles(self):
+        self.text.setFont(QtGui.QFont('Arial', 30))
+        self.text.setStyleSheet("background-color: yellow;padding: 0px; margin: 0px;")
+        self.errorMessage.setStyleSheet("color: red")
 
     def openFileDialog(self):
         filePath, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Open File", "./", "Images (*.png *.xpm *.jpg)")
