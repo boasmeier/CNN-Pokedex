@@ -17,5 +17,7 @@ Example:
 
 ## GUI
 The script index.py starts the GUI.
+
 ---
+
 ![gui](gui.png)
