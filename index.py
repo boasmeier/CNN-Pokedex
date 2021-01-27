@@ -31,7 +31,9 @@ class MyWidget(QtWidgets.QWidget):
         self.pixmap = QtGui.QPixmap(filePath)
         self.img.setPixmap(self.pixmap)
         classifiedImg = classify.classifyImg("pokedex.model", "lb.pickle", filePath)
-        self.img.setPixmap(classifiedImg)
+        image = QtGui.QImage(classifiedImg, classifiedImg.shape[1], classifiedImg.shape[0], classifiedImg.shape[1] * 3, QtGui.QImage.Format_RGB888).rgbSwapped()
+        pixmap = QtGui.QPixmap(image)
+        self.img.setPixmap(pixmap)
 
 
 if __name__ == "__main__":
