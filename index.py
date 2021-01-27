@@ -11,8 +11,10 @@ class MyWidget(QtWidgets.QWidget):
         self.buttonImg = QtWidgets.QPushButton("Chose img!")
         self.buttonDownload = QtWidgets.QPushButton("Download")
         self.text = QtWidgets.QLabel("Pokedex!", alignment=QtCore.Qt.AlignTop.AlignHCenter)
+        self.errorMessage = QtWidgets.QLabel("Please, first classify an image.", alignment=QtCore.Qt.AlignHCenter)
+        self.errorMessage.setHidden(True)
         self.img = QtWidgets.QLabel(self, alignment=QtCore.Qt.AlignVCenter.AlignHCenter)
-        #self.image = None
+        self.image = None
 
         self.initLayout()
         self.buttonImg.clicked.connect(self.openFileDialog)
@@ -21,9 +23,11 @@ class MyWidget(QtWidgets.QWidget):
     def initLayout(self):
         self.layout = QtWidgets.QVBoxLayout()
         self.layout.addWidget(self.text)
+        self.layout.addWidget(self.errorMessage)
         self.layout.addWidget(self.img)
         self.layout.addWidget(self.buttonImg)
         self.layout.addWidget(self.buttonDownload)
+        
         self.setLayout(self.layout)
 
     def openFileDialog(self):
@@ -37,11 +41,14 @@ class MyWidget(QtWidgets.QWidget):
         self.image = QtGui.QImage(classifiedImg, classifiedImg.shape[1], classifiedImg.shape[0], classifiedImg.shape[1] * 3, QtGui.QImage.Format_RGB888).rgbSwapped()
         pixmap = QtGui.QPixmap(self.image)
         self.img.setPixmap(pixmap)
+        self.errorMessage.setHidden(True)
 
     def download(self):
         if(self.image):
             converter = cast.QPixmap2QByteArray()
             QtWidgets.QFileDialog.saveFileContent(converter(self.image), "classified.jpg")
+        else:
+            self.errorMessage.setHidden(False)
 
 
 if __name__ == "__main__":
