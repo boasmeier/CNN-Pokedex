@@ -21,3 +21,5 @@ The script index.py starts the GUI.
 ---
 
 ![gui](gui.png)
+
+This project was built following along this tutorial: https://www.pyimagesearch.com/2018/04/16/keras-and-convolutional-neural-networks-cnns/
